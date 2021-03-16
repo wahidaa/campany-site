@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Revonov</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/business-frontpage.css')}}">
+</head>
+
+{% if logout == True %}
+<div class="alert alert-danger">
+    <strong>You are louged out , please login !</strong> 
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+{% elif register == True %}
+<div class="alert alert-success alert-dismissible fade show">
+    <strong>register success</strong> 
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+{% elif register == False %}
+<div class="alert alert-danger">
+    <strong>register fail</strong> 
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+{% elif login == False %}
+<div class="alert alert-danger">
+    <strong>PleaseVerify your password or your user name</strong> 
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+{% elif logout == True %}
+<div class="alert alert-danger">
+    <strong>"You have been logged out. Please login again."</strong> 
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+{% endif %}
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">Revonov</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            {% if session.user %}
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('user.signup_logins')}}">Home
+                  <span class="sr-only">(current)</span>
+                  
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('user.abouts')}}">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('user.logouts')}}">Logout</a>
+              </li>
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+      {% if session.user %}
+      <header class="bg-primary py-5 mb-5" style="height: 100%;">
+        <div class="container h-100">
+          <div class="row h-100 align-items-center">
+            <div class="col-lg-12">
+              <h1 class="display-4 text-white mt-5 mb-2">Robots For A Cleaner World</h1>
+            </div>
+          </div>
+        </div>
+      </header>
+      {% endif %}
+      {% block content %}
+      {% endblock content %}  
+    <footer class="py-5 bg-dark">
+        <div class="container">
+          <p class="m-0 text-center text-white">&copy;Revonov made with love &#10084;</p>
+        </div>
+      </footer>
+</body>
+
+</html>

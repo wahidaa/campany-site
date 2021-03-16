@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if session.user %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mb-5" style="height: 300px;">
+        <h2>What we do</h2>
+        <hr>
+        <p>Manufacture of compact autonomous sterilizing robots, capable of cleaning all types of floors in healthcare establishments without human intervention, equipped with multiple accessories (sticks, brushes, sponge) to ensure perfect cleaning of floors. Ensured by the essential product of sterilization and cleaning for a healthy environment adequate to the standards.</p>
+        <p>
+          Our products will provide a healthy and hygienic environment with minimization of bacteria in a single swing from where it is based on a GPS which ensures the reading of the cleaned surface without redoing it. More thanks to this unusual technology it will avoid obstacles take a 45 ° detour</p>
+      </div>
+      <div class="col-md-4 mb-5">
+        <h2>Contact Us</h2>
+        <hr>
+        <address>
+          <br>Cité olympique, Tunis
+          <br>
+        </address>
+        <address>
+          <abbr title="Phone">P:</abbr>
+          (216) 24-157-549
+          <br>
+          <abbr title="Email">E:</abbr>
+          <a href="mailto:#">Revonov@gmail.com</a>
+        </address>
+      </div>
+    </div>
+  </div>
+{% else %}
+<div class="center">
+  <div class="container">
+  <div class = "row">
+      <div class ="col-md-5" style="height: 550px;">
+          
+                <h2 class ="text-center">Sign In</h2>
+            <form class="needs-validation" novalidate role="form" method="POST" action="{{ url_for('user.signup_logins')}}">
+                <div class="form-row">
+                <label class="required">user_name</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" class="form-control" name="user_name" placeholder="user_name" required>
+        
+                </div>
+        
+                <label class="required">password</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                    <input type="password" class="form-control" name="password" placeholder="password" required>
+                </div>
+            </div>
+          </br>    
+          <input type="submit" class="btn btn-lg btn-primary"    value="Sign In" name = "submit"> 
+            <p class="text-center">Not a member yet ? <a>Sign Up</a></p>
+            </form>
+      </div>
+
+      <div class ="col-md-5">
+              <h2 class="text-center">Sign Up</h2>
+            <form class="needs-validation" novalidate role="form" method="POST" action="{{ url_for('user.signup_logins')}}">
+                <div class="form-row">
+                <label class="required">first_name</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" class="form-control" name="first_name" placeholder="first_name" required>
+                    <style>.required:after {content:" *"; color: red;} </style>
+                </div>
+                <label class="required">last_name</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" class="form-control" name="last_name" placeholder="last_name" required>
+
+                </div>
+                <label class="required">Email</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                </div>   
+                <label class="required">user_name</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" class="form-control" name="user_name" placeholder="user_name" required>
+
+                </div>
+                <label class="required">password</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                    <input type="password" class="form-control" name="password" placeholder="password" required>
+                </div>                 
+              </div>
+            </br>
+            <input type="submit" value="Sign Up" class="btn btn-lg btn-primary" name = "submit">
+          </br>
+            </form>
+ 
+</div> 
+
+  </div>
+  </div>
+</div>
+  {% endif %}
+  {% endblock content %} 
